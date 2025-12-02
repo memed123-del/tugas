@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.5">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Gemini"/>
+        <attribute name="about" value="Flowchart untuk menghitung pajak kendaraan berdasarkan aturan yang diberikan."/>
+        <attribute name="saved" value="2025-11-29 10:45:00 AM"/>
+        <attribute name="created" value="R2VtaW5p;R0VNSU5JLUxF;2025-11-29;10:45:00 AM;1"/>
+        <attribute name="edited" value="R2VtaW5p;R0VNSU5JLUxF;2025-11-29;10:45:00 AM;1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="NoSTNK" type="String" array="False" size=""/>
+            <declare name="HargaBeli" type="Real" array="False" size=""/>
+            <declare name="JenisKendaraan" type="String" array="False" size=""/>
+            <declare name="TahunKeluaran" type="Integer" array="False" size=""/>
+            <declare name="tarif" type="Real" array="False" size=""/>
+            <declare name="Pajak" type="Real" array="False" size=""/>
+            <output expression="&quot;=== Program Hitung Pajak Kendaraan ===&quot;" newline="True"/>
+            <output expression="&quot;Masukkan No STNK: &quot;" newline="True"/>
+            <input variable="NoSTNK"/>
+            <output expression="&quot;Masukkan Harga Beli: &quot;" newline="True"/>
+            <input variable="HargaBeli"/>
+            <output expression="&quot;Masukkan Jenis Kendaraan (pribadi/umum): &quot;" newline="True"/>
+            <input variable="JenisKendaraan"/>
+            <output expression="&quot;Masukkan Tahun Keluaran: &quot;" newline="True"/>
+            <input variable="TahunKeluaran"/>
+            <assign variable="tarif" expression="0"/>
+            <if expression="JenisKendaraan == &quot;pribadi&quot;">
+                <then>
+                    <if expression="TahunKeluaran &gt;= 2015">
+                        <then>
+                            <assign variable="tarif" expression="0.02"/>
+                        </then>
+                        <else>
+                            <assign variable="tarif" expression="0.015"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <if expression="JenisKendaraan == &quot;umum&quot;">
+                        <then>
+                            <if expression="TahunKeluaran &gt;= 2015">
+                                <then>
+                                    <assign variable="tarif" expression="0.01"/>
+                                </then>
+                                <else>
+                                    <assign variable="tarif" expression="0.005"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <output expression="&quot;Jenis kendaraan tidak valid. Harap masukkan 'pribadi' atau 'umum'.&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="Pajak" expression="HargaBeli * tarif"/>
+            <output expression="&quot;Tarif yang dikenakan: &quot; &amp; tarif * 100 &amp; &quot;%&quot;" newline="True"/>
+            <output expression="&quot;Besar Pajak Kendaraan Anda adalah: Rp &quot; &amp; Pajak" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
+
