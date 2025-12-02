@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.5">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Gemini"/>
+        <attribute name="about" value="Flowchart untuk Cek Kelayakan Beasiswa berdasarkan nilai dan penghasilan."/>
+        <attribute name="saved" value="2025-11-29 10:55:00 AM"/>
+        <attribute name="created" value="R2VtaW5p;R0VNSU5JLUxF;2025-11-29;10:55:00 AM;1"/>
+        <attribute name="edited" value="R2VtaW5p;R0VNSU5JLUxF;2025-11-29;10:55:00 AM;1"/>
+    </attributes>
+
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="namaSiswa" type="String"/>
+            <declare name="nilaiRapor" type="Real"/>
+            <declare name="penghasilan" type="Real"/>
+            <declare name="statusBeasiswa" type="String"/>
+            <declare name="ulang" type="String"/>
+
+            <assign variable="ulang" expression="&quot;ya&quot;"/>
+
+            <while expression="ulang = &quot;ya&quot; OR ulang = &quot;YA&quot;">
+                <output expression="&quot;=== Simulasi Cek Kelayakan Beasiswa ===&quot;" newline="True"/>
+                
+                <output expression="&quot;Masukkan Nama Siswa: &quot;" newline="True"/>
+                <input variable="namaSiswa"/>
+
+                <output expression="&quot;Masukkan Nilai Rapor (0-100): &quot;" newline="True"/>
+                <input variable="nilaiRapor"/>
+
+                <output expression="&quot;Masukkan Penghasilan Orang Tua (juta): &quot;" newline="True"/>
+                <input variable="penghasilan"/>
+
+                <if expression="nilaiRapor &gt;= 85">
+                    <then>
+                        <if expression="penghasilan &lt;= 3">
+                            <then>
+                                <assign variable="statusBeasiswa" expression="&quot;Layak Beasiswa Penuh&quot;"/>
+                            </then>
+                            <else>
+                                <if expression="penghasilan &lt;= 5">
+                                    <then>
+                                        <assign variable="statusBeasiswa" expression="&quot;Layak Beasiswa Parsial&quot;"/>
+                                    </then>
+                                    <else>
+                                        <assign variable="statusBeasiswa" expression="&quot;Tidak Layak Beasiswa&quot;"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </else>
+                    </then>
+                    <else>
+                        <assign variable="statusBeasiswa" expression="&quot;Tidak Layak Mengajukan Beasiswa&quot;"/>
+                    </else>
+                </if>
+
+                <output expression="&quot;--- Hasil ---&quot;" newline="True"/>
+                <output expression="&quot;Nama Siswa : &quot; &amp; namaSiswa" newline="True"/>
+                <output expression="&quot;Status     : &quot; &amp; statusBeasiswa" newline="True"/>
+
+                <output expression="&quot;Cek siswa lain? (ya/tidak): &quot;" newline="True"/>
+                <input variable="ulang"/>
+            </while>
+
+            <output expression="&quot;Program selesai. Terima kasih!&quot;" newline="True"/>
+
+        </body>
+    </function>
+</flowgorithm>
